@@ -1,9 +1,157 @@
 <!DOCTYPE html>
+<html lang="en"><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Enterprise Account | Parmessh Corp</title>
+    <title>Enterprise Identity Gateway | Parmessh Corp</title>
+    <!-- External Modular Assets Link -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Notification Engine Components -->
+    <div id="actionToast" class="system-toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMessage">Handshake Authenticated</span>
+    </div>
+
+    <!-- Legal Dialog Overlay Layer -->
+    <div id="legalModal" class="legal-modal-overlay">
+        <div class="legal-modal-window">
+            <h3 id="modalTitle">System Provisioning Requirements</h3>
+            <p id="modalBody">This node connection environment remains bounded by system non-disclosure clauses, ISO 27001 tracking, and corporate access compliance criteria.</p>
+            <button class="btn-submit" id="modalCloseBtn">Acknowledge & Close</button>
+        </div>
+    </div>
+
+    <!-- Main Shell Framework -->
+    <main class="enterprise-container">
+        
+        <!-- Left Brand Profile Showcase Segment -->
+        <section class="brand-panel">
+            <div class="corporate-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Parmessh Corp</span>
+            </div>
+
+            <div class="brand-content">
+                <h2>Empower your entire team infrastructure.</h2>
+                <p>Deploy integrated pipelines, unified cloud environments, and workspace management configurations within a single secure portal.</p>
+            </div>
+
+            <div class="corporate-footer-features">
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>ISO 27001 Secure</span>
+                </div>
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>99.9% Uptime SLA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Side: Interactive Commercial Auth Panel Segment -->
+        <section class="auth-panel">
+            
+            <!-- SEGMENT: REGISTER COMPONENT VIEW -->
+            <div id="registerView" class="auth-view active-view">
+                <header class="auth-header">
+                    <h1>Get Started</h1>
+                    <p>Already have an account? <span id="switchToLogin">Sign In</span></p>
+                </header>
+
+                <form id="registerForm" class="corporate-form" novalidate>
+                    <div class="form-row">
+                        <input type="text" id="regName" placeholder="Full Name" autocomplete="name">
+                        <div class="field-error-msg">Please enter your system access identity name.</div>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" id="regEmail" placeholder="Work Email" autocomplete="email">
+                        <div class="field-error-msg">Please provide a valid enterprise corporate email address.</div>
+                    </div>
+                    <div class="form-row">
+                        <input type="password" id="regPassword" placeholder="Password" autocomplete="new-password">
+                        <div class="field-error-msg">Password must contain at least 8 character keys.</div>
+                    </div>
+
+                    <div class="legal-row">
+                        <input type="checkbox" id="regLegalCheck">
+                        <label for="regLegalCheck">I agree to the internal enterprise <span id="openTermsLink">Terms of Service</span> and verified <span id="openPrivacyLink">Privacy Policy</span>.</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <div class="spinner"></div>
+                        <span>Create Enterprise Account</span>
+                    </button>
+                </form>
+
+                <div class="auth-divider">Or Access Via</div>
+
+                
+                    <svg class="brand-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Single Sign-On (SSO)</span>
+                </button>
+            </div>
+
+            <!-- SEGMENT: LOGIN COMPONENT VIEW -->
+            <div id="loginView" class="auth-view">
+                <header class="auth-header">
+                    <h1>Welcome Back</h1>
+                    <p>New to the workspace network? <span id="switchToRegister">Create Account</span></p>
+                </header>
+
+                <form id="loginForm" class="corporate-form" novalidate>
+                    <div class="form-row">
+                        <input type="email" id="loginEmail" placeholder="Work Email" autocomplete="email">
+                        <div class="field-error-msg">Please enter a valid enterprise corporate email address.</div>
+                    </div>
+                    <div class="form-row">
+                        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+                        <div class="field-error-msg">Please input your matching system security password key.</div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="margin-top: 1.5rem;">
+                        <div class="spinner"></div>
+                        <span>Sign In to System Portal</span>
+                    </button>
+                </form>
+
+                <div class="auth-divider">Or Access Via</div>
+
+                
+                    <svg class="brand-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Single Sign-On (SSO)</span>
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Script Entry Segment -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Identity Gateway | Parmessh Corp</title>
     <style>
         /* Enterprise Design Token System */
         * {
@@ -111,6 +259,23 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+        }
+
+        /* State views management */
+        .auth-view {
+            display: none;
+            width: 100%;
+        }
+
+        .auth-view.active-view {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .auth-header h1 {
@@ -127,12 +292,23 @@
             margin-bottom: 2rem;
         }
 
+        .auth-header p span {
+            color: #6366f1;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .auth-header p span:hover {
+            text-decoration: underline;
+        }
+
         .corporate-form {
             width: 100%;
         }
 
         .form-row {
-            margin-bottom: 0.85rem;
+            margin-bottom: 1rem;
+            position: relative;
         }
 
         /* High-Definition Input Fields */
@@ -140,7 +316,7 @@
         .corporate-form input[type="email"],
         .corporate-form input[type="password"] {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.85rem 1rem;
             font-size: 0.95rem;
             border: 1px solid #e4e4e7;
             border-radius: 8px;
@@ -153,6 +329,24 @@
             outline: none;
             border-color: #71717a;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Interactive Dynamic Real-Time Errors */
+        .field-error-msg {
+            font-size: 0.75rem;
+            color: #ef4444;
+            margin-top: 0.35rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-row.has-error input {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2;
+        }
+
+        .form-row.has-error .field-error-msg {
+            display: block;
         }
 
         /* Checkbox & Corporate Agreement Legalities */
@@ -178,13 +372,13 @@
             user-select: none;
         }
 
-        .legal-row label a {
+        .legal-row label span {
             color: #09090b;
-            text-decoration: none;
             font-weight: 500;
+            cursor: pointer;
         }
 
-        .legal-row label a:hover {
+        .legal-row label span:hover {
             text-decoration: underline;
         }
 
@@ -200,10 +394,19 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .btn-submit:hover {
             background-color: #27272a;
+        }
+
+        .btn-submit:disabled {
+            background-color: #a1a1aa;
+            cursor: not-allowed;
         }
 
         /* Standardized Separation Rule */
@@ -268,71 +471,51 @@
             flex-shrink: 0;
         }
 
-        /* Adaptive Responsiveness for Portable Devices */
-        @media (max-width: 1024px) {
-            .enterprise-container {
-                grid-template-columns: 1fr;
-            }
-            .brand-panel {
-                padding: 3rem 2.5rem;
-                gap: 3rem;
-            }
-            .auth-panel {
-                padding: 4rem 2.5rem;
-            }
+        /* Component: Global System Status Notification */
+        .system-toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background-color: #09090b;
+            color: #ffffff;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateX(150%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid #27272a;
         }
-    </style>
-</head>
-<body>
 
-    <div class="enterprise-container">
-        
-        <!-- Left Brand Profile Showcase -->
-        <section class="brand-panel">
-            <div class="corporate-logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <span>Parmessh Corp</span>
-            </div>
+        .system-toast.toast-visible {
+            transform: translateX(0);
+        }
 
-            <div class="brand-content">
-                <h2>Empower your entire team infrastructure.</h2>
-                <p>Deploy integrated pipelines, unified cloud environments, and workspace management configurations within a single secure portal.</p>
-            </div>
+        /* Loading Spinner Component */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.6s linear infinite;
+            display: none;
+        }
 
-            <div class="corporate-footer-features">
-                <div class="feature-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>ISO 27001 Secure</span>
-                </div>
-                <div class="feature-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>99.9% Uptime SLA</span>
-                </div>
-            </div>
-        </section>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-        <!-- Right User Registration Form Panel -->
-        <main class="auth-panel">
-            <div class="auth-header">
-                <h1>Get Started</h1>
-                <p>Create a secure gateway into your workspace network.</p>
-            </div>
-            
-            <form class="corporate-form" onsubmit="event.preventDefault();">
-                <div class="form-row">
-                    <input type="text" placeholder="Full Name" required autocomplete="name">
-                </div>
-                <div class="form-row">
-                    <input type="email" placeholder="Work Email" required autocomplete="email">
-                </div>
-                <div class="form-row">
-                    <input type="password" placeholder="Password" required autocomplete="new-password">
-                </div>
-                
-                <div class="legal-row">
+        /* Component: Modal Window Framework */
+        .legal-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+Use code with caution.background: rgba(9, 9, 11, 0.4);backdrop-filter: blur(4px);z-index: 2000;display: flex;align-items: center;justify-content: center;opacity: 0;pointer-events: none;transition: opacity 0.2s ease;}.legal-modal-overlay.modal-open {opacity: 1;pointer-events: auto;}.legal-modal-window {background: #ffffff;width: 100%;max-width: 550px;border-radius: 12px;padding: 2.5rem;box-shadow: 0 20px 40px rgba(0,0,0,0.15);border: 1px solid #e4e4e7;transform: scale(0.95);transition: transform 0.2s ease;}.legal-modal-overlay.modal-open .legal-modal-window {transform: scale(1);}.legal-modal-window h3 {font-size: 1.5rem;margin-bottom: 1rem;letter-spacing: -0.02em;}.legal-modal-window p {font-size: 0.95rem;color: #71717a;line-height: 1.6;margin-bottom: 1.5rem;}/* Adaptive Responsiveness for Portable Devices */@media (max-width: 1024px) {.enterprise-container {grid-template-columns: 1fr;}.brand-panel {padding: 3rem 2.5rem;gap: 3rem;}.auth-panel {padding: 4rem 2.5rem;}}Authentication SuccessfulCorporate System Provisioning AgreementThis cloud platform configuration environment is governed by standard non-disclosure constraints, ISO 27001 internal logging routines, and systemic zero-trust architectural assertions.Acknowledge & Close// State Machine for Viewsfunction switchViewState(targetState) {const registerView = document.getElementById('registerView');const loginView = document.getElementById('loginView');// Clear prior formatting errorsdocument.querySelectorAll('.form-row').forEach(row => row.classList.remove('has-error'));if (targetState === 'login') {registerView.classList.remove('active-view');setTimeout(() => {loginView.classList.add('active-view');}, 150);} else {loginView.classList.remove('active-view');setTimeout(() => {registerView.classList.add('active-view');}, 150);}}// Functional Validation Logic & API Mockingfunction handleFormSubmission(event, mode) {event.preventDefault();let isFormValid = true;if (mode === 'register') {const nameInp = document.getElementById('regName');const emailInp = document.getElementById('regEmail');const passInp = document.getElementById('regPassword');const legalCheck = document.getElementById('regLegalCheck');if (nameInp.value.trim().length < 2) {showFieldError(nameInp);isFormValid = false;} else { clearFieldError(nameInp); }if (!validateEmailFormat(emailInp.value)) {showFieldError(emailInp);isFormValid = false;} else { clearFieldError(emailInp); }if (passInp.value.length < 8) {showFieldError(passInp);isFormValid = false;} else { clearFieldError(passInp); }if (!legalCheck.checked) {displaySystemToast("You must accept our systemic terms before registration.");return;}} else if (mode === 'login') {const emailInp = document.getElementById('loginEmail');const passInp = document.getElementById('loginPassword');if (!validateEmailFormat(emailInp.value)) {showFieldError(emailInp);isFormValid = false;} else { clearFieldError(emailInp); }if (passInp.value.length < 1) {showFieldError(passInp);isFormValid = false;} else { clearFieldError(passInp); }}if (isFormValid) {executeMockNetworkRequest(event.target, mode);}}function validateEmailFormat(email) {const expression = /^[^\s@]+@[^\s@]+.[^\s@]+$/;return expression.test(email);}function showFieldError(element) {element.parentElement.classList.add('has-error');}function clearFieldError(element) {element.parentElement.classList.remove('has-error');}// Simulating Real APIs using Loading Statesfunction executeMockNetworkRequest(formElement, mode) {const submitBtn = formElement.querySelector('.btn-submit');const btnText = submitBtn.querySelector('span');const spinner = submitBtn.querySelector('.spinner');// Set Loading StatessubmitBtn.disabled = true;spinner.style.display = 'block';const preservedText = btnText.innerText;btnText.innerText = 'Processing Gateway Data...';setTimeout(() => {// Return Interface to Normal StatesubmitBtn.disabled = false;spinner.style.display = 'none';btnText.innerText = preservedText;if (mode === 'register') {displaySystemToast("Enterprise Identity Created Successfully!");formElement.reset();setTimeout(() => switchViewState('login'), 1200);} else {displaySystemToast("Access Authenticated. Launching System Console...");formElement.reset();}}, 1800);}function triggerFederatedSSO(providerName) {displaySystemToast(Routing secure token handshake via ${providerName}...);}// Global System Component Feedback Elementsfunction displaySystemToast(messageText) {const toastElement = document.getElementById('actionToast');document.getElementById('toastMessage').innerText = messageText;toastElement.classList.add('toast-visible');setTimeout(() => {toastElement.classList.remove('toast-visible');}, 4000);}// Modal Control Triggersfunction openLegalModal(legalType) {document.getElementById('modalTitle').innerText = ${legalType} Gateway Documentation;document.getElementById('modalBody').innerText = You are accessing the explicit documentation structural parameters concerning Parmessh Corp's deployment framework for legal protection rules regarding security monitoring compliance dashboards (${legalType}).;document.getElementById('legalModal').classList.add('modal-open');}function closeLegalModal() {document.getElementById('legalModal').classList.remove('modal-open');}
