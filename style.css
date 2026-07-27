@@ -163,3 +163,61 @@ body {
 .btn-submit:hover {
     background-color: #1d4ed8;
 }
+/* "Or" Divider Line Styling */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.25rem 0;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .75em;
+}
+
+/* Parmessh Corp Custom Brand Button */
+.btn-parmessh {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: #ffffff;
+    color: #0f172a;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Subtle background shift on hover */
+.btn-parmessh:hover {
+    background-color: #f8f9fa;
+    border-color: #94a3b8;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Inline SVG Icon Styling */
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    color: #2563eb; /* Matches your brand theme blue */
+}
