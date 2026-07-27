@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account | Parmessh Corp</title>
+    <title>Create Enterprise Account | Parmessh Corp</title>
     <style>
-        /* Premium Minimalist Design System */
+        /* Enterprise Design Token System */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -24,164 +24,176 @@
             padding: 2rem 1rem;
         }
 
-        /* Responsive Split Screen Layout */
-        .page-wrapper {
+        /* Split-Panel Corporate Form Blueprint */
+        .enterprise-container {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            max-width: 1100px;
+            grid-template-columns: 1.15fr 0.85fr;
+            max-width: 1200px;
             width: 100%;
+            min-height: 680px;
             background: #ffffff;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
             overflow: hidden;
-            border: 1px solid #f4f4f5;
+            border: 1px solid #e4e4e7;
         }
 
-        /* Left Side: Professional Showcase/Hero */
-        .hero-panel {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        /* Left Side: Corporate Core Branding Banner */
+        .brand-panel {
+            background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
             color: #ffffff;
-            padding: 4rem;
+            padding: 4.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: baseline;
+            justify-content: space-between;
             position: relative;
         }
 
-        .hero-tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            width: max-content;
-            margin-bottom: 2rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .hero-panel h2 {
-            font-size: 2.5rem;
+        .corporate-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
+            color: #ffffff;
         }
 
-        .hero-panel p {
-            color: #94a3b8;
-            font-size: 1.05rem;
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            color: #6366f1; /* Corporate Indigo Brand Anchor */
+        }
+
+        .brand-content h2 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.03em;
+            max-width: 460px;
+        }
+
+        .brand-content p {
+            color: #a1a1aa;
+            font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 2.5rem;
-            max-width: 400px;
+            max-width: 480px;
         }
 
-        .btn-showcase {
-            display: inline-block;
-            background-color: #ffffff;
-            color: #0f172a;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            width: max-content;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* Value Proposition Bullet Badges */
+        .corporate-footer-features {
+            display: flex;
+            gap: 2rem;
+            border-top: 1px solid #27272a;
+            padding-top: 2rem;
+            margin-top: 3rem;
         }
 
-        .btn-showcase:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        .feature-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            font-weight: 500;
         }
 
-        /* Right Side: Clean Sign-Up Interface */
-        .form-panel {
-            padding: 4rem;
+        .feature-badge svg {
+            width: 16px;
+            height: 16px;
+            color: #22c55e; /* Secure Green Check */
+        }
+
+        /* Right Side: Interactive Commercial Auth Panel */
+        .auth-panel {
+            padding: 4.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .brand-header h1 {
+        .auth-header h1 {
             font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.03em;
-            color: #18181b;
+            color: #09090b;
             margin-bottom: 0.5rem;
         }
 
-        .brand-header p {
+        .auth-header p {
             font-size: 0.9rem;
             color: #71717a;
             margin-bottom: 2rem;
         }
 
-        .signup-form {
+        .corporate-form {
             width: 100%;
         }
 
-        .form-group {
+        .form-row {
             margin-bottom: 0.85rem;
         }
 
-        /* Input Styling */
-        .signup-form input[type="text"],
-        .signup-form input[type="email"],
-        .signup-form input[type="password"] {
+        /* High-Definition Input Fields */
+        .corporate-form input[type="text"],
+        .corporate-form input[type="email"],
+        .corporate-form input[type="password"] {
             width: 100%;
             padding: 0.8rem 1rem;
             font-size: 0.95rem;
             border: 1px solid #e4e4e7;
             border-radius: 8px;
             background-color: #ffffff;
-            color: #18181b;
+            color: #09090b;
             transition: all 0.15s ease-in-out;
         }
 
-        .signup-form input:focus {
+        .corporate-form input:focus {
             outline: none;
-            border-color: #a1a1aa;
+            border-color: #71717a;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        /* Checkbox Styling */
-        .terms-group {
+        /* Checkbox & Corporate Agreement Legalities */
+        .legal-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.6rem;
             margin: 1.25rem 0;
         }
 
-        .terms-group input[type="checkbox"] {
-            accent-color: #18181b;
+        .legal-row input[type="checkbox"] {
+            accent-color: #09090b;
             width: 16px;
             height: 16px;
+            margin-top: 0.15rem;
             cursor: pointer;
         }
 
-        .terms-group label {
+        .legal-row label {
             font-size: 0.85rem;
             color: #71717a;
+            line-height: 1.4;
             user-select: none;
         }
 
-        .terms-group label a {
-            color: #18181b;
+        .legal-row label a {
+            color: #09090b;
             text-decoration: none;
             font-weight: 500;
         }
 
-        .terms-group label a:hover {
+        .legal-row label a:hover {
             text-decoration: underline;
         }
 
-        /* Dark Primary Button */
+        /* Solid Activation Submit Button */
         .btn-submit {
             width: 100%;
-            background-color: #18181b;
+            background-color: #09090b;
             color: #ffffff;
-            padding: 0.8rem;
+            padding: 0.85rem;
             font-size: 0.95rem;
             font-weight: 500;
             border: none;
@@ -194,28 +206,30 @@
             background-color: #27272a;
         }
 
-        /* Divider Line */
-        .divider {
+        /* Standardized Separation Rule */
+        .auth-divider {
             display: flex;
             align-items: center;
             text-align: center;
             margin: 1.5rem 0;
             color: #a1a1aa;
             font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
-        .divider::before,
-        .divider::after {
+        .auth-divider::before,
+        .auth-divider::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid #f4f4f5;
         }
 
-        .divider:not(:empty)::before { margin-right: 1rem; }
-        .divider:not(:empty)::after { margin-left: 1rem; }
+        .auth-divider:not(:empty)::before { margin-right: 1rem; }
+        .auth-divider:not(:empty)::after { margin-left: 1rem; }
 
-        /* SSO and Social Grid */
-        .btn-sso {
+        /* Unified Identity Provider Layouts */
+        .btn-identity {
             width: 100%;
             display: flex;
             align-items: center;
@@ -232,99 +246,95 @@
             transition: all 0.15s ease;
         }
 
-        .btn-sso:hover {
+        .btn-identity:hover {
             background-color: #f4f4f5;
             border-color: #d4d4d8;
         }
 
-        .btn-parmessh {
+        /* Main Corporate Vault SSO Activation */
+        .btn-enterprise-sso {
             border-color: #e4e4e7;
             background-color: #ffffff;
         }
 
-        .btn-parmessh .icon-brand {
-            color: #4f46e5; /* Signature Brand Indigo Color */
+        .btn-enterprise-sso .brand-vector {
+            color: #6366f1;
         }
 
-        .social-grid {
+        .social-matrix {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.75rem;
             margin-top: 0.75rem;
         }
 
-        .icon-brand {
+        .brand-vector {
             width: 18px;
             height: 18px;
             flex-shrink: 0;
         }
 
-        /* Mobile View Rules */
-        @media (max-width: 900px) {
-            .page-wrapper {
+        /* Adaptive Responsiveness for Portable Devices */
+        @media (max-width: 1024px) {
+            .enterprise-container {
                 grid-template-columns: 1fr;
             }
-            .hero-panel {
-                padding: 3rem 2rem;
+            .brand-panel {
+                padding: 3rem 2.5rem;
+                gap: 3rem;
             }
-            .form-panel {
-                padding: 3rem 2rem;
+            .auth-panel {
+                padding: 4rem 2.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="page-wrapper">
+    <div class="enterprise-container">
         
-        <!-- Left Showcase Panel -->
-        <section class="hero-panel">
-            <div class="hero-tag">Parmessh Corp</div>
-            <h2>Hello, I'm a Creator</h2>
-            <p>Welcome to my professional space. I build modern, clean, and impactful digital experiences.</p>
-            <a href="#" class="btn-showcase">View My Work</a>
+        <!-- Left Brand Profile Showcase -->
+        <section class="brand-panel">
+            <div class="corporate-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Parmessh Corp</span>
+            </div>
+
+            <div class="brand-content">
+                <h2>Empower your entire team infrastructure.</h2>
+                <p>Deploy integrated pipelines, unified cloud environments, and workspace management configurations within a single secure portal.</p>
+            </div>
+
+            <div class="corporate-footer-features">
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>ISO 27001 Secure</span>
+                </div>
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>99.9% Uptime SLA</span>
+                </div>
+            </div>
         </section>
 
-        <!-- Right Sign Up Panel -->
-        <main class="form-panel">
-            <div class="brand-header">
-                <h1>Create Account</h1>
-                <p>Access your dashboard across all services.</p>
+        <!-- Right User Registration Form Panel -->
+        <main class="auth-panel">
+            <div class="auth-header">
+                <h1>Get Started</h1>
+                <p>Create a secure gateway into your workspace network.</p>
             </div>
             
-            <form class="signup-form" onsubmit="event.preventDefault();">
-                <div class="form-group">
-                    <input type="text" placeholder="Name" required autocomplete="name">
+            <form class="corporate-form" onsubmit="event.preventDefault();">
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" required autocomplete="name">
                 </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required autocomplete="email">
+                <div class="form-row">
+                    <input type="email" placeholder="Work Email" required autocomplete="email">
                 </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" required autocomplete="new-password">
-                </div>
-                
-                <div class="terms-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I agree to the <a href="#">Terms</a> & <a href="#">Privacy</a></label>
-                </div>
-                
-                <button type="submit" class="btn-submit">Continue</button>
-
-                <div class="divider">or</div>
-
-                <!-- Enterprise SSO Button -->
-                <button type="button" class="btn-sso btn-parmessh">
-                    <svg class="icon-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                    Sign in with Parmessh Corp
-                </button>
-
-                <!-- Modern Minimal Social Row -->
-                <div class="social-grid">
-                    <!-- Google -->
-                    <button type="button" class="btn-sso" aria-label="Sign in with Google">
-                        <svg class="icon-brand" viewBox="0 0 24 24">
-                            <path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l3.256-3.133C18.41 1.945 15.62.943 12.24.943c-6.107 0-11 4.894-11 11s4.893 11 11 11c6.38 0 10.614-4.48 10.614-10.8 0-.727-.078-1.282-.173-1.858H12.24z"/>
-                        </svg>
-                        <span>Google</span>
+                <div class="form-row">
