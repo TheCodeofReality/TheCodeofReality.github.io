@@ -80,3 +80,86 @@ body {
         margin: 0 auto;
     }
 }
+/* Form Layout Styling */
+.signup-form {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Modern Input Boxes */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #0f172a;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* Focus effect when user clicks into a box */
+.signup-form input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Terms and Conditions Layout */
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+    text-align: left;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.terms-group label {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.terms-group label a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-group label a:hover {
+    text-decoration: underline;
+}
+
+/* Pro Full-Width Submit Button */
+.btn-submit {
+    width: 100%;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1d4ed8;
+}
