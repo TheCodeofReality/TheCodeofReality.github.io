@@ -1,168 +1,161 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Structural DOM Node Mapping
-    const nodes = {
-        switchToLogin: document.getElementById("switchToLogin"),
-        switchToRegister: document.getElementById("switchToRegister"),
-        registerView: document.getElementById("registerView"),
-        loginView: document.getElementById("loginView"),
-        registerForm: document.getElementById("registerForm"),
-        loginForm: document.getElementById("loginForm"),
-        actionToast: document.getElementById("actionToast"),
-        toastMessage: document.getElementById("toastMessage"),
-        legalModal: document.getElementById("legalModal"),
-        modalTitle: document.getElementById("modalTitle"),
-        modalBody: document.getElementById("modalBody"),
-        modalCloseBtn: document.getElementById("modalCloseBtn"),
-        openTermsLink: document.getElementById("openTermsLink"),
-        openPrivacyLink: document.getElementById("openPrivacyLink"),
-        ssoButtons: document.querySelectorAll(".sso-trigger-btn")
-    };
 
-    // State Handler: Interface View Swapping
-    function switchViewState(targetState) {
-        document.querySelectorAll(".form-row").forEach(row => row.classList.remove("has-error"));
-        
-        if (targetState === "login") {
-            nodes.registerView.classList.remove("active-view");
-            setTimeout(() => { nodes.loginView.classList.add("active-view"); }, 150);
-        } else {
-            nodes.loginView.classList.remove("active-view");
-            setTimeout(() => { nodes.registerView.classList.add("active-view"); }, 150);
-        }
-    }
+***
 
-    // Interactive Field Error Utilities
-    function toggleFieldError(inputElement, show) {
-        const row = inputElement.parentElement;
-        if (show) {
-            row.classList.add("has-error");
-        } else {
-            row.classList.remove("has-error");
-        }
-    }
+### 2. Clear out your old JavaScript and save this entirely as `app.js`
 
-    function checkEmailFormat(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+    // View Switchers
+    document.getElementById('switchToLogin').addEventListener('click', () => switchViewState('login'));
+    document.getElementById('switchToRegister').addEventListener('click', () => switchViewState('register'));
 
-    // System Feedback Mechanisms
-    function presentToast(messageText) {
-        nodes.toastMessage.innerText = messageText;
-        nodes.actionToast.classList.add("toast-visible");
-        setTimeout(() => { nodes.actionToast.classList.remove("toast-visible"); }, 4000);
-    }
-
-    // Dialog Window Toggles
-    function showModal(title, text) {
-        nodes.modalTitle.innerText = title;
-        nodes.modalBody.innerText = text;
-        nodes.legalModal.classList.add("modal-open");
-    }
-
-    function hideModal() {
-        nodes.legalModal.classList.remove("modal-open");
-    }
-
-    // Form Event Pipeline Handler
-    async function processFormSubmission(event, mode) {
-        event.preventDefault();
-        let passValidation = true;
-
-        if (mode === "register") {
-            const inputs = {
-                name: document.getElementById("regName"),
-                email: document.getElementById("regEmail"),
-                pass: document.getElementById("regPassword"),
-                check: document.getElementById("regLegalCheck")
-            };
-
-            if (inputs.name.value.trim().length < 2) { toggleFieldError(inputs.name, true); passValidation = false; }
-            else { toggleFieldError(inputs.name, false); }
-
-            if (!checkEmailFormat(inputs.email.value)) { toggleFieldError(inputs.email, true); passValidation = false; }
-            else { toggleFieldError(inputs.email, false); }
-
-            if (inputs.pass.value.length < 8) { toggleFieldError(inputs.pass, true); passValidation = false; }
-            else { toggleFieldError(inputs.pass, false); }
-
-            if (!inputs.check.checked) {
-                presentToast("You must accept systemic regulatory terms to continue.");
-                return;
-            }
-
-            if (passValidation) {
-                await dispatchNetworkTransaction(event.target, "/api/register", {
-                    name: inputs.name.value,
-                    email: inputs.email.value,
-                    password: inputs.pass.value
-                }, "Account Registered! Redirecting...");
-                event.target.reset();
-                setTimeout(() => switchViewState("login"), 1500);
-            }
-
-        } else if (mode === "login") {
-            const inputs = {
-                email: document.getElementById("loginEmail"),
-                pass: document.getElementById("loginPassword")
-            };
-
-            if (!checkEmailFormat(inputs.email.value)) { toggleFieldError(inputs.email, true); passValidation = false; }
-            else { toggleFieldError(inputs.email, false); }
-
-            if (inputs.pass.value.length < 1) { toggleFieldError(inputs.pass, true); passValidation = false; }
-            else { toggleFieldError(inputs.pass, false); }
-
-            if (passValidation) {
-                await dispatchNetworkTransaction(event.target, "/api/login", {
-                    email: inputs.email.value,
-                    password: inputs.pass.value
-                }, "Access Authorized. Mounting Dashboard Console...");
-                event.target.reset();
-            }
-        }
-    }
-
-    // API Post Transmission Interface Engine
-    async function dispatchNetworkTransaction(formElement, endpoint, payload, successAlert) {
-        const submitButton = formElement.querySelector(".btn-submit");
-        const textualNode = submitButton.querySelector("span");
-        const loaderNode = submitButton.querySelector(".spinner");
-
-        submitButton.disabled = true;
-        loaderNode.style.display = "block";
-        const standardText = textualNode.innerText;
-        textualNode.innerText = "Synchronizing Node Token...";
-
-        try {
-            // Simulated local network stack ping. Swap to external server location if desired.
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            presentToast(successAlert);
-        } catch (err) {
-            presentToast("Gateway connectivity timeout.");
-        } finally {
-            submitButton.disabled = false;
-            loaderNode.style.display = "none";
-            textualNode.innerText = standardText;
-        }
-    }
-
-    // Event Binding Instantiations
-    nodes.switchToLogin.addEventListener("click", () => switchViewState("login"));
-    nodes.switchToRegister.addEventListener("click", () => switchViewState("register"));
-    nodes.modalCloseBtn.addEventListener("click", hideModal);
-
-    nodes.openTermsLink.addEventListener("click", () => {
-        showModal("Terms of Service Framework", "This core gateway context structure governs workspace container pipelines and legal structural resource tracking within Parmessh Corp networks.");
-    });
-
-    nodes.openPrivacyLink.addEventListener("click", () => {
-        showModal("Data Tracking & Privacy Rule", "User credentials, encrypted hashes, and infrastructure tracking states remain managed exclusively inside high-availability localized container blocks.");
-    });
-
-    nodes.ssoButtons.forEach(btn => {
-        btn.addEventListener("click", () => presentToast("Routing identity verification via Federated Corporate Vault SSO..."));
-    });
-
-    nodes.registerForm.addEventListener("submit", (e) => processFormSubmission(e, "register"));
-    nodes.loginForm.addEventListener("submit", (e) => processFormSubmission(e, "login"));
+    // Modal Listeners
+    document.getElementById('openTermsLink').addEventListener('click', () => openLegalModal('Terms of Service'));
+    document.getElementById('openPrivacyLink').addEventListener('click', () => openLegalModal('Privacy Policy'));
+    document.getElementById('modalCloseBtn').addEventListener('click', closeLegalModal);
 });
+
+// State Machine for Views
+function switchViewState(targetState) {
+    const registerView = document.getElementById('registerView');
+    const loginView = document.getElementById('loginView');
+    
+    // Clear prior formatting errors
+    document.querySelectorAll('.form-row').forEach(row => row.classList.remove('has-error'));
+    
+    if (targetState === 'login') {
+        registerView.classList.remove('active-view');
+        setTimeout(() => { loginView.classList.add('active-view'); }, 150);
+    } else {
+        loginView.classList.remove('active-view');
+        setTimeout(() => { registerView.classList.add('active-view'); }, 150);
+    }
+}
+
+// Functional Validation Logic & API Mocking
+function handleFormSubmission(event, mode) {
+    event.preventDefault();
+    let isFormValid = true;
+
+    if (mode === 'register') {
+        const nameInp = document.getElementById('regName');
+        const emailInp = document.getElementById('regEmail');
+        const passInp = document.getElementById('regPassword');
+        const legalCheck = document.getElementById('regLegalCheck');
+
+        if (nameInp.value.trim().length < 2) {
+            showFieldError(nameInp);
+            isFormValid = false;
+        } else { clearFieldError(nameInp); }
+
+        if (!validateEmailFormat(emailInp.value)) {
+            showFieldError(emailInp);
+            isFormValid = false;
+        } else { clearFieldError(emailInp); }
+
+        if (passInp.value.length < 8) {
+            showFieldError(passInp);
+            isFormValid = false;
+        } else { clearFieldError(passInp); }
+
+        if (!legalCheck.checked) {
+            displaySystemToast("You must accept our systemic terms before registration.");
+            return;
+        }
+    } else if (mode === 'login') {
+        const emailInp = document.getElementById('loginEmail');
+        const passInp = document.getElementById('loginPassword');
+
+        if (!validateEmailFormat(emailInp.value)) {
+            showFieldError(emailInp);
+            isFormValid = false;
+        } else { clearFieldError(emailInp); }
+
+        if (passInp.value.length < 1) {
+            showFieldError(passInp);
+            isFormValid = false;
+        } else { clearFieldError(passInp); }
+    }
+
+    if (isFormValid) {
+        executeMockNetworkRequest(event.target, mode);
+    }
+}
+
+function validateEmailFormat(email) {
+    const expression = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return expression.test(email);
+}
+
+function showFieldError(element) {
+    element.parentElement.classList.add('has-error');
+}
+
+function clearFieldError(element) {
+    element.parentElement.classList.remove('has-error');
+}
+
+// Simulating Real APIs using Loading States
+function executeMockNetworkRequest(formElement, mode) {
+    const submitBtn = formElement.querySelector('.btn-submit');
+    const btnText = submitBtn.querySelector('span');
+    const spinner = submitBtn.querySelector('.spinner');
+
+    // Set Loading States
+    submitBtn.disabled = true;
+    spinner.style.display = 'block';
+    const preservedText = btnText.innerText;
+    btnText.innerText = 'Processing Gateway Data...';
+
+    setTimeout(() => {
+        // Return Interface to Normal State
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        btnText.innerText = preservedText;
+
+        if (mode === 'register') {
+            displaySystemToast("Enterprise Identity Created Successfully!");
+            formElement.reset();
+            setTimeout(() => switchViewState('login'), 1200);
+        } else {
+            displaySystemToast("Access Authenticated. Launching System Console...");
+            formElement.reset();
+            
+            // Transform app state into portal view mode
+            setTimeout(() => {
+                document.body.classList.add('portal-active');
+            }, 800);
+        }
+    }, 1800);
+}
+
+function terminateSession() {
+    document.body.classList.remove('portal-active');
+    displaySystemToast("Session securely closed. Identity cleared.");
+    switchViewState('login');
+}
+
+function triggerFederatedSSO(providerName) {
+    displaySystemToast(`Routing secure token handshake via ${providerName}...`);
+}
+
+// Global System Component Feedback Elements
+function displaySystemToast(messageText) {
+    const toastElement = document.getElementById('actionToast');
+    document.getElementById('toastMessage').innerText = messageText;
+    toastElement.classList.add('toast-visible');
+    setTimeout(() => {
+        toastElement.classList.remove('toast-visible');
+    }, 4000);
+}
+
+// Modal Control Triggers
+function openLegalModal(legalType) {
+    document.getElementById('modalTitle').innerText = `${legalType} Gateway Documentation`;
+    document.getElementById('modalBody').innerText = `You are accessing the explicit documentation structural parameters concerning Parmessh Corp's deployment framework for legal protection rules regarding security monitoring compliance dashboards (${legalType}).`;
+    document.getElementById('legalModal').classList.add('modal-open');
+}
+
+function closeLegalModal() {
+    document.getElementById('legalModal').classList.remove('modal-open');
+}
