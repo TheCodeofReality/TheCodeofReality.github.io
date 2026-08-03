@@ -239,10 +239,6 @@
         .auth-divider:not(:empty)::after { margin-left: 1rem; }
 
         /* Dashboard View Override */
-        body.portal-active .enterprise-container {
-            display: none;
-        }
-
         .dashboard-layout {
             display: none;
             width: 100%;
@@ -252,6 +248,10 @@
             border-radius: 16px;
             border: 1px solid #e4e4e7;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        body.portal-active .enterprise-container {
+            display: none;
         }
 
         body.portal-active .dashboard-layout {
@@ -329,4 +329,4 @@
             </div>
 
             <!-- LOGIN VIEW -->
-Single Sign-On (SSO)Connection Health: SecureSystem provisioning metrics and deployment pipeline logs are initialized successfully.// Tab panel toggling mechanicsconst loginLink = document.getElementById('switchToLogin');const registerLink = document.getElementById('switchToRegister');const registerView = document.getElementById('registerView');const loginView = document.getElementById('loginView');loginLink.addEventListener('click', () => {registerView.classList.remove('active-view');loginView.classList.add('active-view');});registerLink.addEventListener('click', () => {loginView.classList.remove('active-view');registerView.classList.add('active-view');});// Gateway Authentication Triggerfunction handleAuth(event) {event.preventDefault();document.body.classList.add('portal-active');}// Terminal Disconnect Triggerfunction logoutSession() {document.body.classList.remove('portal-active');loginView.classList.add('active-view');registerView.classList.remove('active-view');}
+Sign In to System PortalOr Access ViaSingle Sign-On (SSO)Connection Health: SecureSystem provisioning metrics and deployment pipeline logs are initialized successfully.// Tab panel toggling mechanicsconst loginLink = document.getElementById('switchToLogin');const registerLink = document.getElementById('switchToRegister');const registerView = document.getElementById('registerView');const loginView = document.getElementById('loginView');loginLink.addEventListener('click', () => {registerView.classList.remove('active-view');loginView.classList.add('active-view');});registerLink.addEventListener('click', () => {loginView.classList.remove('active-view');registerView.classList.add('active-view');});// Gateway Authentication Triggerfunction handleAuth(event) {event.preventDefault();document.body.classList.add('portal-active');}// Terminal Disconnect Triggerfunction logoutSession() {document.body.classList.remove('portal-active');loginView.classList.add('active-view');registerView.classList.remove('active-view');}
