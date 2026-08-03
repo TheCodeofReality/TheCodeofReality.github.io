@@ -171,46 +171,6 @@
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
-        .field-error-msg {
-            display: none;
-            color: #ef4444;
-            font-size: 0.8rem;
-            margin-left: 0.25rem;
-        }
-
-        .form-row.has-error .field-error-msg {
-            display: block;
-        }
-
-        .form-row.has-error input {
-            border-color: #ef4444;
-            background-color: #fef2f2;
-        }
-
-        .legal-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin: 0.5rem 0;
-        }
-
-        .legal-row input[type="checkbox"] {
-            margin-top: 0.25rem;
-            cursor: pointer;
-        }
-
-        .legal-row label {
-            font-size: 0.85rem;
-            color: #71717a;
-            line-height: 1.4;
-        }
-
-        .legal-row span {
-            color: #2563eb;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
         .btn-submit {
             width: 100%;
             padding: 0.875rem;
@@ -228,13 +188,8 @@
             transition: background-color 0.2s ease;
         }
 
-        .btn-submit:hover:not(:disabled) {
+        .btn-submit:hover {
             background-color: #27272a;
-        }
-
-        .btn-submit:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
         }
 
         .btn-sso {
@@ -283,101 +238,95 @@
         .auth-divider:not(:empty)::before { margin-right: 1rem; }
         .auth-divider:not(:empty)::after { margin-left: 1rem; }
 
-        /* Notification Engine Components */
-        .system-toast {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background-color: #ffffff;
-            border: 1px solid #27272a;
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transform: translateX(150%);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .system-toast.toast-visible {
-            transform: translateX(0);
-        }
-
-        /* Loading Spinner Component */
-        .spinner {
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #ffffff;
-            animation: spin 0.6s linear infinite;
+        /* Dashboard View Override */
+        body.portal-active .enterprise-container {
             display: none;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Component: Modal Window Framework */
-        .legal-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(9, 9, 11, 0.4);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .legal-modal-overlay.modal-open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .legal-modal-window {
-            background: #ffffff;
-            width: 100%;
-            max-width: 550px;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border: 1px solid #e4e4e7;
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .legal-modal-overlay.modal-open .legal-modal-window {
-            transform: scale(1);
-        }
-
-        .legal-modal-window h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .legal-modal-window p {
-            font-size: 0.95rem;
-            color: #71717a;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ========================================== */
-        /* SYSTEM MODULE: MASTER DASHBOARD PANELS     */
-        /* ========================================== */
         .dashboard-layout {
             display: none;
             width: 100%;
-            max-width: 1440px;
+            max-width: 1200px;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid #e4e4e7;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
 
-min-height: 85vh;background: #ffffff;border-radius: 16px;border: 1px solid #e4e4e7;box-shadow: 0 20px 50px rgba(0,0,0,0.04);grid-template-columns: 260px 1fr;overflow: hidden;}body.portal-active {align-items: flex-start;padding: 4rem 2rem;}body.portal-active .enterprise-container {display: none;}body.portal-active .dashboard-layout {display: grid;}/* Sidebar Subsystem */.dash-sidebar {background: #09090b;color: #ffffff;padding: 2rem 1.5rem;display: flex;flex-direction: column;justify-content: space-between;border-right: 1px solid #27272a;}.dash-nav-links {display: flex;flex-direction: column;gap: 0.5rem;margin-top: 2.5rem;}.nav-item {display: flex;align-items: center;gap: 0.75rem;padding: 0.75rem 1rem;color: #a1a1aa;text-decoration: none;border-radius: 8px;font-size: 0.95rem;font-weight: 500;transition: all 0.2s ease;}.nav-item.active, .nav-item:hover {color: #ffffff;background: #27272a;}/* Main Console Frame */.dash-main-window {padding: 3rem;background: #fafafa;overflow-y: auto;width: 100%;}.dash-header-block {display: flex;justify-content: space-between;align-items: center;margin-bottom: 2.5rem;border-bottom: 1px solid #e4e4e7;padding-bottom: 1.5rem;}.dash-header-block h2 {font-size: 1.75rem;font-weight: 700;letter-spacing: -0.03em;}.btn-logout {padding: 0.5rem 1rem;background: transparent;border: 1px solid #e4e4e7;border-radius: 6px;font-size: 0.875rem;cursor: pointer;font-weight: 500;transition: all 0.2s ease;}.btn-logout:hover {background: #ef4444;color: #ffffff;border-color: #ef4444;}/* Analytics Data Strip */.analytics-grid {display: grid;grid-template-columns: repeat(3, 1fr);gap: 1.5rem;margin-bottom: 2.5rem;}.metric-card {background: #ffffff;border: 1px solid #e4e4e7;padding: 1.5rem;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.01);}.metric-card p {font-size: 0.85rem;color: #71717a;font-weight: 500;text-transform: uppercase;letter-spacing: 0.05em;}.metric-card h3 {font-size: 2rem;font-weight: 700;margin-top: 0.5rem;letter-spacing: -0.02em;}/* Active Console Table Layout */.data-table-container {background: #ffffff;border: 1px solid #e4e4e7;border-radius: 12px;overflow: hidden;}.table-title {padding: 1.25rem 1.5rem;font-weight: 600;border-bottom: 1px solid #e4e4e7;background: #ffffff;}.console-table {width: 100%;border-collapse: collapse;text-align: left;font-size: 0.9rem;}.console-table th {background: #fafafa;padding: 1rem 1.5rem;color: #71717a;font-weight: 500;border-bottom: 1px solid #e4e4e7;}.console-table td {padding: 1rem 1.5rem;border-bottom: 1px solid #e4e4e7;color: #27272a;}.status-pill {display: inline-flex;padding: 0.25rem 0.5rem;font-size: 0.75rem;font-weight: 600;border-radius: 4px;background: #dcfce7;color: #15803d;}/* Adaptive Responsiveness for Portable Devices */@media (max-width: 1024px) {.enterprise-container {grid-template-columns: 1fr;}.brand-panel {display: none !important;}.dashboard-layout {grid-template-columns: 1fr;}.dash-sidebar {display: none;}}Handshake AuthenticatedSystem Provisioning RequirementsThis node connection environment remains bounded by system non-disclosure clauses, ISO 27001 tracking, and corporate access compliance criteria.Acknowledge & CloseParmessh CloudConsole MainDeploy PipelineEnvironment VariablesAccess Controlv4.12.0-Productiondocument.addEventListener('DOMContentLoaded', () => {// View Switchersdocument.getElementById('switchToLogin').addEventListener('click', () => switchViewState('login'));document.getElementById('switchToRegister').addEventListener('click', () => switchViewState('register'));// Modal Listenersdocument.getElementById('openTermsLink').addEventListener('click', () => openLegalModal('Terms of Service'));document.getElementById('openPrivacyLink').addEventListener('click', () => openLegalModal('Privacy Policy'));document.getElementById('modalCloseBtn').addEventListener('click', closeLegalModal);});// State Machine for Viewsfunction switchViewState(targetState) {const registerView = document.getElementById('registerView');const loginView = document.getElementById('loginView');// Clear prior formatting errorsdocument.querySelectorAll('.form-row').forEach(row => row.classList.remove('has-error'));if (targetState === 'login') {registerView.classList.remove('active-view');setTimeout(() => { loginView.classList.add('active-view'); }, 150);} else {loginView.classList.remove('active-view');setTimeout(() => { registerView.classList.add('active-view'); }, 150);}}// Functional Validation Logic & API Mockingfunction handleFormSubmission(event, mode) {event.preventDefault();let isFormValid = true;if (mode === 'register') {const nameInp = document.getElementById('regName');const emailInp = document.getElementById('regEmail');const passInp = document.getElementById('regPassword');const legalCheck = document.getElementById('regLegalCheck');if (nameInp.value.trim().length < 2) {showFieldError(nameInp);isFormValid = false;} else { clearFieldError(nameInp); }if (!validateEmailFormat(emailInp.value)) {showFieldError(emailInp);isFormValid = false;} else { clearFieldError(emailInp); }if (passInp.value.length < 8) {showFieldError(passInp);isFormValid = false;} else { clearFieldError(passInp); }if (!legalCheck.checked) {displaySystemToast("You must accept our systemic terms before registration.");return;}} else if (mode === 'login') {const emailInp = document.getElementById('loginEmail');const passInp = document.getElementById('loginPassword');if (!validateEmailFormat(emailInp.value)) {showFieldError(emailInp);isFormValid = false;} else { clearFieldError(emailInp); }if (passInp.value.length < 1) {showFieldError(passInp);isFormValid = false;} else { clearFieldError(passInp); }}if (isFormValid) {executeMockNetworkRequest(event.target, mode);}}function validateEmailFormat(email) {const expression = /^[^\s@]+@[^\s@]+.[^\s@]+$/;return expression.test(email);}function showFieldError(element) {element.parentElement.classList.add('has-error');}function clearFieldError(element) {element.parentElement.classList.remove('has-error');}// Simulating Real APIs using Loading Statesfunction executeMockNetworkRequest(formElement, mode) {const submitBtn = formElement.querySelector('.btn-submit');const btnText = submitBtn.querySelector('span');const spinner = submitBtn.querySelector('.spinner');// Set Loading StatessubmitBtn.disabled = true;spinner.style.display = 'block';const preservedText = btnText.innerText;btnText.innerText = 'Processing Gateway Data...';setTimeout(() => {// Return Interface to Normal StatesubmitBtn.disabled = false;spinner.style.display = 'none';btnText.innerText = preservedText;if (mode === 'register') {displaySystemToast("Enterprise Identity Created Successfully!");formElement.reset();setTimeout(() => switchViewState('login'), 1200);} else {displaySystemToast("Access Authenticated. Launching System Console...");formElement.reset();// Transform app state into portal view modesetTimeout(() => {document.body.classList.add('portal-active');}, 800);}}, 1800);}function terminateSession() {document.body.classList.remove('portal-active');displaySystemToast("Session securely closed. Identity cleared.");switchViewState('login');}function triggerFederatedSSO(providerName) {displaySystemToast(Routing secure token handshake via ${providerName}...);}// Global System Component Feedback Elementsfunction displaySystemToast(messageText) {const toastElement = document.getElementById('actionToast');document.getElementById('toastMessage').innerText = messageText;toastElement.classList.add('toast-visible');setTimeout(() => {toastElement.classList.remove('toast-visible');}, 4000);}// Modal Control Triggersfunction openLegalModal(legalType) {document.getElementById('modalTitle').innerText = ${legalType} Gateway Documentation;document.getElementById('modalBody').innerText = You are accessing the explicit documentation structural parameters concerning Parmessh Corp's deployment framework for legal protection rules regarding security monitoring compliance dashboards (${legalType}).;document.getElementById('legalModal').classList.add('modal-open');}function closeLegalModal() {document.getElementById('legalModal').classList.remove('modal-open');}
+        body.portal-active .dashboard-layout {
+            display: block;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e4e4e7;
+            padding-bottom: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .enterprise-container {
+                grid-template-columns: 1fr;
+            }
+            .brand-panel {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="enterprise-container">
+        <!-- Brand Presentation Side -->
+        <section class="brand-panel">
+            <div class="corporate-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Parmessh Corp</span>
+            </div>
+            <div class="brand-content">
+                <h2>Empower your entire team infrastructure.</h2>
+                <p>Deploy integrated pipelines, unified cloud environments, and workspace management configurations within a single secure portal.</p>
+            </div>
+            <div class="corporate-footer-features">
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>ISO 27001 Secure</span>
+                </div>
+                <div class="feature-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>99.9% Uptime SLA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Authentication Panel Side -->
+        <section class="auth-panel">
+            <!-- REGISTER VIEW -->
+            <div id="registerView" class="auth-view active-view">
+                <header class="auth-header">
+                    <h1>Get Started</h1>
+                    <p>Already have an account? <span id="switchToLogin">Sign In</span></p>
+                </header>
+                <form id="registerForm" class="corporate-form" onsubmit="handleAuth(event)">
+                    <div class="form-row"><input type="text" placeholder="Full Name"></div>
+                    <div class="form-row"><input type="email" placeholder="Work Email"></div>
+                    <div class="form-row"><input type="password" placeholder="Password"></div>
+                    <button type="submit" class="btn-submit">Create Enterprise Account</button>
+                </form>
+                <div class="auth-divider">Or Access Via</div>
+                <button type="button" class="btn-sso" onclick="handleAuth(event)">
+                    <svg class="brand-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Single Sign-On (SSO)</span>
+                </button>
+            </div>
+
+            <!-- LOGIN VIEW -->
+Single Sign-On (SSO)Connection Health: SecureSystem provisioning metrics and deployment pipeline logs are initialized successfully.// Tab panel toggling mechanicsconst loginLink = document.getElementById('switchToLogin');const registerLink = document.getElementById('switchToRegister');const registerView = document.getElementById('registerView');const loginView = document.getElementById('loginView');loginLink.addEventListener('click', () => {registerView.classList.remove('active-view');loginView.classList.add('active-view');});registerLink.addEventListener('click', () => {loginView.classList.remove('active-view');registerView.classList.add('active-view');});// Gateway Authentication Triggerfunction handleAuth(event) {event.preventDefault();document.body.classList.add('portal-active');}// Terminal Disconnect Triggerfunction logoutSession() {document.body.classList.remove('portal-active');loginView.classList.add('active-view');registerView.classList.remove('active-view');}
